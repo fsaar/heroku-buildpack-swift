@@ -1,9 +1,12 @@
 rm -rf $CACHE_DIR/clang-$CLANG_VERSION
+rm -rf $CACHE_DIR/swift-corelibs-libdispatch
 if [[ ! -d "$CACHE_DIR/clang-$CLANG_VERSION" ]]; then
   cd $CACHE_DIR
   puts-step "Installing clang-$CLANG_VERSION"
   mkdir -p "clang-$CLANG_VERSION"
   curl http://llvm.org/releases/$CLANG_VERSION/clang+llvm-$CLANG_VERSION-x86_64-linux-gnu-ubuntu-14.04.tar.xz -s | xz -d -c | tar x -C clang-$CLANG_VERSION &> /dev/null
+
+  apt-get install -y libtool pkg-config systemtap-sdt-dev libbsd-dev libblocksruntime-dev libicu-dev libcurl4-gnutls-dev
 
   SWIFT_PREFIX="$(swiftenv prefix)"
   PATH_TO_SWIFT_TOOLCHAIN="$(swiftenv prefix)/usr"
