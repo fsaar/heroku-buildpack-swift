@@ -19,6 +19,8 @@ if [ -f "ENV_DIR/SWIFT_BUILD_CONFIGURATION" ]; then
   SWIFT_BUILD_CONFIGURATION=`cat "$ENV_DIR/SWIFT_BUILD_CONFIGURATION"`
 fi
 
+apt-get install -y libtool pkg-config systemtap-sdt-dev libbsd-dev libblocksruntime-dev libicu-dev libcurl4-gnutls-dev
+
 mkdir -p "$CACHE_DIR"
 
 source "$BIN_DIR/utils"
