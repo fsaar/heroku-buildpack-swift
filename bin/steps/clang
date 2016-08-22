@@ -1,3 +1,4 @@
+rm -rf $CACHE_DIR/clang-$CLANG_VERSION
 if [[ ! -d "$CACHE_DIR/clang-$CLANG_VERSION" ]]; then
   cd $CACHE_DIR
   puts-step "Installing clang-$CLANG_VERSION"
