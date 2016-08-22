@@ -3,6 +3,15 @@ if [[ ! -d "$CACHE_DIR/clang-$CLANG_VERSION" ]]; then
   puts-step "Installing clang-$CLANG_VERSION"
   mkdir -p "clang-$CLANG_VERSION"
   curl http://llvm.org/releases/$CLANG_VERSION/clang+llvm-$CLANG_VERSION-x86_64-linux-gnu-ubuntu-14.04.tar.xz -s | xz -d -c | tar x -C clang-$CLANG_VERSION &> /dev/null
+
+  SWIFT_PREFIX="$(swiftenv prefix)"
+  PATH_TO_SWIFT_TOOLCHAIN="$(swiftenv prefix)/usr"
+  git clone --recursive -b experimental/foundation https://github.com/apple/swift-corelibs-libdispatch.git
+  cd swift-corelibs-libdispatch
+  sh autogen.sh
+  ./configure --with-swift-toolchain=$PATH_TO_SWIFT_TOOLCHAIN --prefix=$PATH_TO_SWIFT_TOOLCHAIN 
+  make 
+  make install 
   cd $BUILD_DIR
 fi
 
