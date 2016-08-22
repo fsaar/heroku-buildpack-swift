@@ -26,7 +26,7 @@ source "$BIN_DIR/steps/swiftenv"
 source "$BIN_DIR/steps/swift"
 source "$BIN_DIR/steps/clang"
 source "$BIN_DIR/steps/hooks/pre_compile"
-source "$BIN_DIR/steps/swift-build"
+#source "$BIN_DIR/steps/swift-build"
 source "$BIN_DIR/steps/swift-install"
 
 # Setup application environment
